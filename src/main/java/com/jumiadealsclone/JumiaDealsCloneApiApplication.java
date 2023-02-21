@@ -1,4 +1,4 @@
-package com.jumiadealsclone.jumiadealscloneapi;
+package com.jumiadealsclone;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
