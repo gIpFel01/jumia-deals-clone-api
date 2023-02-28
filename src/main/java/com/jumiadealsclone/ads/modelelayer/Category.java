@@ -1,32 +1,20 @@
 package com.jumiadealsclone.ads.modelelayer;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.io.Serializable;
 
 @Entity
 @Table(name = "category")
-public class Category {
+public class Category implements Serializable {
 
     @Id
-    @Column(name = "idcategory",nullable = false)
+    @Column(name = "idcategory")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long idCategory;
 
-    @Column(name = "labelcategory")
-    private String labelCategory;
-
-    public Category() {
-    }
-
-    public Category(long idCategory, String labelCategory) {
-        this.idCategory = idCategory;
-        this.labelCategory = labelCategory;
-    }
-
-    public Category(String labelCategory) {
-        this.labelCategory = labelCategory;
-    }
+    @Enumerated(EnumType.STRING)
+    private CategoryType categoryType;
 
     public long idCategory() {
         return idCategory;
@@ -36,12 +24,19 @@ public class Category {
         this.idCategory = idCategory;
     }
 
-    public String labelCategory() {
-        return labelCategory;
+    public CategoryType categoryType() {
+        return categoryType;
     }
 
-    public void setLabelCategory(String labelCategory) {
-        this.labelCategory = labelCategory;
+    public void setCategoryType(CategoryType categoryType) {
+        this.categoryType = categoryType;
     }
 
+    @Override
+    public String toString() {
+        return "Category{" +
+                "idCategory=" + idCategory +
+                ", categoryType=" + categoryType +
+                '}';
+    }
 }

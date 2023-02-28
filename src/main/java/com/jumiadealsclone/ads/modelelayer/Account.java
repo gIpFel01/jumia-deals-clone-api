@@ -1,9 +1,11 @@
 package com.jumiadealsclone.ads.modelelayer;
 
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import jakarta.persistence.*;
 
 import java.util.Date;
 
+@JsonPOJOBuilder
 @Entity
 @Table(name = "account")
 public class Account {
@@ -26,6 +28,14 @@ public class Account {
     private Date advertiserLastLoginDate;
 
     public Account() {
+    }
+
+    public Account(String advertiserUsername, String advertiserPassword,
+                   String advertiserPhotoProfile, Date advertiserLastLoginDate) {
+        this.advertiserUsername = advertiserUsername;
+        this.advertiserPassword = advertiserPassword;
+        this.advertiserPhotoProfile = advertiserPhotoProfile;
+        this.advertiserLastLoginDate = advertiserLastLoginDate;
     }
 
     public long idAccount() {

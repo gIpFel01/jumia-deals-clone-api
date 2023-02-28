@@ -31,8 +31,19 @@ public class Advertiser {
     @OneToMany(mappedBy = "advertiser", cascade = CascadeType.ALL)
     Set<Advertisement> advertisements;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Account account;
+
+    public Advertiser(String advertiserFirstName, String advertiserName,
+                      String advertiserEmail, String advertiserPhoneNumber,
+                      String advertiserLocation, Account account) {
+        this.advertiserFirstName = advertiserFirstName;
+        this.advertiserName = advertiserName;
+        this.advertiserEmail = advertiserEmail;
+        this.advertiserPhoneNumber = advertiserPhoneNumber;
+        this.advertiserLocation = advertiserLocation;
+        this.account = account;
+    }
 
     public Account account() {
         return account;

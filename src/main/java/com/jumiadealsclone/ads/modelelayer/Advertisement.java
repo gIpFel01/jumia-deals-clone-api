@@ -26,19 +26,30 @@ public class Advertisement {
     @Column(name = "advertisementprice")
     private long advertisementPrice;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idavertiser")
     private Advertiser advertiser;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "idlocality")
+    @ManyToOne
+    @JoinColumn(name = "idLocality")
     private Locality locality;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "idcategory")
+    @ManyToOne
+    @JoinColumn(name = "idCategory")
     private Category category;
 
     public Advertisement() {
+    }
+
+    public Advertisement(String advertisementPhoto, String advertisementDescription, Date advertisementPublishDate,
+                         long advertisementPrice, Advertiser advertiser, Locality locality, Category category) {
+        this.advertisementPhoto = advertisementPhoto;
+        this.advertisementDescription = advertisementDescription;
+        this.advertisementPublishDate = advertisementPublishDate;
+        this.advertisementPrice = advertisementPrice;
+        this.advertiser = advertiser;
+        this.locality = locality;
+        this.category = category;
     }
 
     public long idadvertisement() {

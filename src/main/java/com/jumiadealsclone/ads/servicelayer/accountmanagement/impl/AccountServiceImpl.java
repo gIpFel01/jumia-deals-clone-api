@@ -1,44 +1,58 @@
 package com.jumiadealsclone.ads.servicelayer.accountmanagement.impl;
 
-import com.jumiadealsclone.ads.servicelayer.accountmanagement.interfaces.AccountService;
-import com.jumiadealsclone.ads.servicelayer.accountmanagement.interfaces.ProfilePhotoService;
 import com.jumiadealsclone.ads.modelelayer.Account;
-import com.jumiadealsclone.ads.repositorylayer.AccountRepository;
+import com.jumiadealsclone.ads.servicelayer.accountmanagement.interfaces.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class AccountServiceImpl implements AccountService {
-    private AccountRepository accountRepository;
-    private ProfilePhotoService profilePhotoService;
+    private final ProfilePhotoService profilePhotoService;
+    private final PasswordService passwordService;
+    private final CreateAccount createAccount;
+    private final DeleteAccount deleteAccount;
+    private final UserExists userExists;
 
     @Autowired
-    public AccountServiceImpl(AccountRepository accountRepository, ProfilePhotoService profilePhotoService) {
-        this.accountRepository = accountRepository;
+    public AccountServiceImpl(ProfilePhotoService profilePhotoService, PasswordService passwordService,
+                              CreateAccount createAccount, DeleteAccount deleteAccount,
+                              UserExists userExists) {
         this.profilePhotoService = profilePhotoService;
+        this.passwordService = passwordService;
+        this.createAccount = createAccount;
+        this.deleteAccount = deleteAccount;
+        this.userExists = userExists;
     }
 
     @Override
-    public void shiftUsername(String currentUsername,String newUername) {
-        Account account = accountRepository.findAccountByAdvertiserUsername(currentUsername);
-        account.setAdvertiserUsername(newUername);
-        accountRepository.save(account);
+    public Account findAccount(String username) {
+        return userExists.userFound(username);
     }
 
     @Override
-    public void shiftPassword(String username, String newPassword) {
-        Account account = accountRepository.findAccountByAdvertiserUsername(username);
-        account.setAdvertiserPassword(newPassword);
-        accountRepository.save(account);
+    public Account createAccount(String username, String password, String photoProfile, Date lastLoginDate) {
+        return createAccount.createAccount(username,password,photoProfile,lastLoginDate);
     }
 
     @Override
-    public void shiftProfilePhoto(String username, String photoPath) {
-        profilePhotoService.shiftProfilePhoto(username,photoPath);
+    public void deleteAccount(String username) {
+        deleteAccount.deleteAccount(username);
     }
 
     @Override
-    public void deleteProfilePhoto(String username) {
+    public void updateAccountPassword(String username, String newPassword) {
+        passwordService.updatePassword(username, newPassword);
+    }
+
+    @Override
+    public void updateAccountProfilePhoto(String username, String photoPath) {
+        profilePhotoService.updatePhotoProfile(username, photoPath);
+    }
+
+    @Override
+    public void deleteAccountProfilePhoto(String username) {
         profilePhotoService.deleteProfilePhoto(username);
     }
 }

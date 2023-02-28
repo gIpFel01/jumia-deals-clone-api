@@ -1,5 +1,6 @@
 package com.jumiadealsclone.ads.modelelayer;
 
+
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -9,23 +10,12 @@ import java.io.Serializable;
 public class Locality implements Serializable {
 
     @Id
+    @Column(name = "idlocality")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idLocality",nullable = false)
     private long idLocality;
-    @Column(name = "labellocality")
-    private String labelLocality;
 
-    public Locality() {
-    }
-
-    public Locality(long idLocality, String labelLocality) {
-        this.idLocality = idLocality;
-        this.labelLocality = labelLocality;
-    }
-
-    public Locality(String labelLocality) {
-        this.labelLocality = labelLocality;
-    }
+    @Enumerated(EnumType.STRING)
+    private LocalityType localityType;
 
     public long idLocality() {
         return idLocality;
@@ -35,19 +25,19 @@ public class Locality implements Serializable {
         this.idLocality = idLocality;
     }
 
-    public String labelLocality() {
-        return labelLocality;
+    public LocalityType localityType() {
+        return localityType;
     }
 
-    public void setLabelLocality(String labelLocality) {
-        this.labelLocality = labelLocality;
+    public void setLocalityType(LocalityType localityType) {
+        this.localityType = localityType;
     }
 
     @Override
     public String toString() {
         return "Locality{" +
                 "idLocality=" + idLocality +
-                ", labelLocality='" + labelLocality + '\'' +
+                ", localityType=" + localityType +
                 '}';
     }
 }
