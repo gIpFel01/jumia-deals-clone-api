@@ -2,6 +2,7 @@ package com.jumiadealsclone.ads.servicelayer.accountmanagement.impl;
 
 import com.jumiadealsclone.ads.modelelayer.Account;
 import com.jumiadealsclone.ads.repositorylayer.AccountRepository;
+import com.jumiadealsclone.ads.servicelayer.accountmanagement.exception.UserExistsException;
 import com.jumiadealsclone.ads.servicelayer.accountmanagement.interfaces.UserExists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ public class UserExistsImpl implements UserExists {
     public Account userFound(String username) {
         Account account = accountRepository.findAccountByAdvertiserUsername(username).orElse(null);
         if(account == null){
-            throw new IllegalStateException("User not found");
+            throw new UserExistsException("User not found");
         }
         return account;
     }
@@ -27,7 +28,7 @@ public class UserExistsImpl implements UserExists {
     public void userNotFound(String username) {
         Account account = accountRepository.findAccountByAdvertiserUsername(username).orElse(null);
         if(account != null){
-            throw new IllegalStateException("User already exists");
+            throw new UserExistsException("User already exists");
         }
     }
 }

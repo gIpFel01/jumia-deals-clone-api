@@ -12,7 +12,7 @@ public class Account {
 
     @Id
     @Column(name = "idaccount",nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idAccount;
 
     @Column(name = "advertiserusername")

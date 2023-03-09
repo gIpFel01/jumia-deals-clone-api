@@ -10,10 +10,11 @@ public class Category implements Serializable {
 
     @Id
     @Column(name = "idcategory")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idCategory;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "categorytype")
     private CategoryType categoryType;
 
     public long idCategory() {

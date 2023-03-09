@@ -1,6 +1,5 @@
 package com.jumiadealsclone.ads.servicelayer.advertisermanagement.impl;
 
-import com.jumiadealsclone.ads.modelelayer.Account;
 import com.jumiadealsclone.ads.modelelayer.Advertiser;
 import com.jumiadealsclone.ads.servicelayer.advertisermanagement.interfaces.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +23,8 @@ public class AdvertiserServiceImpl implements AdvertiserService {
     }
 
     @Override
-    public void createAdvertiser(String firstName, String name,
-                                 String email, String phoneNumber,
-                                 String location, Account account) {
-        createAdvertiser.createAdvertiser(firstName,name,email,phoneNumber,location,account);
+    public void createAdvertiser(Advertiser advertiser) {
+        createAdvertiser.createAdvertiser(advertiser);
     }
 
     @Override

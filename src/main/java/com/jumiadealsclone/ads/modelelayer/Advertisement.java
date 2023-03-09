@@ -10,7 +10,7 @@ public class Advertisement {
 
     @Id
     @Column(name = "idadvertisement",nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idadvertisement;
 
     @Column(name = "advertisementphoto")
@@ -27,15 +27,15 @@ public class Advertisement {
     private long advertisementPrice;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idavertiser")
+    @JoinColumn(name = "idadvertiser")
     private Advertiser advertiser;
 
     @ManyToOne
-    @JoinColumn(name = "idLocality")
+    @JoinColumn(name = "idlocality")
     private Locality locality;
 
     @ManyToOne
-    @JoinColumn(name = "idCategory")
+    @JoinColumn(name = "idcategory")
     private Category category;
 
     public Advertisement() {

@@ -8,7 +8,7 @@ public class Store {
 
     @Id
     @Column(name = "idstore")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idStore;
 
     @Column(name = "storename")
@@ -24,6 +24,7 @@ public class Store {
     private String storeDescription;
 
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinColumn(name = "idadvertiser")
     private Advertiser advertiser;
 
     public Store() {

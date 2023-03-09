@@ -11,10 +11,11 @@ public class Locality implements Serializable {
 
     @Id
     @Column(name = "idlocality")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idLocality;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "localitytype")
     private LocalityType localityType;
 
     public long idLocality() {

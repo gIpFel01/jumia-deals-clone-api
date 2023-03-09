@@ -5,8 +5,6 @@ import com.jumiadealsclone.ads.servicelayer.accountmanagement.interfaces.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-
 @Service
 public class AccountServiceImpl implements AccountService {
     private final ProfilePhotoService profilePhotoService;
@@ -32,8 +30,8 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Account createAccount(String username, String password, String photoProfile, Date lastLoginDate) {
-        return createAccount.createAccount(username,password,photoProfile,lastLoginDate);
+    public void createAccount(Account account) {
+        createAccount.createAccount(account);
     }
 
     @Override

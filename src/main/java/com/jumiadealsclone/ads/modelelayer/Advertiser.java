@@ -10,7 +10,7 @@ public class Advertiser {
 
     @Id
     @Column(name = "idadvertiser",nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idAdvertiser;
 
     @Column(name = "advertiserfirstname")
@@ -22,7 +22,7 @@ public class Advertiser {
     @Column(name = "advertiseremail")
     private String advertiserEmail;
 
-    @Column(name = "advertiserPhoneNumber")
+    @Column(name = "advertiserphonenumber")
     private String advertiserPhoneNumber;
 
     @Column(name = "advertiserlocation")
@@ -32,6 +32,7 @@ public class Advertiser {
     Set<Advertisement> advertisements;
 
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idaccount")
     private Account account;
 
     public Advertiser(String advertiserFirstName, String advertiserName,
