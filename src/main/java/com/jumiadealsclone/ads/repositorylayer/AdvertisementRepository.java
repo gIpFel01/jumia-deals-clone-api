@@ -18,7 +18,7 @@ public interface AdvertisementRepository extends JpaRepository<Advertisement, Lo
     Optional<Set<Advertisement>> findAdvertisementByAdvertiser(Advertiser advertiser);
 
     @Query(value = "SELECT * FROM advertisement WHERE advertisementpublishdate >= " +
-            ": recentDate ORDER BY advertisementpublishdate DESC",
+            ":recentDate ORDER BY advertisementpublishdate DESC",
             nativeQuery = true)
     Optional<Set<Advertisement>> findRecentAdvertisement(Date recentDate);
 }
