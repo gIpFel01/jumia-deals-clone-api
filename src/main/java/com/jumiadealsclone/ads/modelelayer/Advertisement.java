@@ -11,7 +11,7 @@ public class Advertisement {
     @Id
     @Column(name = "idadvertisement",nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idadvertisement;
+    private long idAdvertisement;
 
     @Column(name = "advertisementphoto")
     private String advertisementPhoto;
@@ -53,11 +53,11 @@ public class Advertisement {
     }
 
     public long idadvertisement() {
-        return idadvertisement;
+        return idAdvertisement;
     }
 
-    public void setIdadvertisement(long idadvertisement) {
-        this.idadvertisement = idadvertisement;
+    public void setIdadvertisement(long idAdvertisement) {
+        this.idAdvertisement = idAdvertisement;
     }
 
     public String advertisementPhoto() {
@@ -119,7 +119,7 @@ public class Advertisement {
     @Override
     public String toString() {
         return "Advertisement{" +
-                "idadvertisement=" + idadvertisement +
+                "idadvertisement=" + idAdvertisement +
                 ", advertisementPhoto='" + advertisementPhoto + '\'' +
                 ", advertisementDescription='" + advertisementDescription + '\'' +
                 ", advertisementPublishDate=" + advertisementPublishDate +

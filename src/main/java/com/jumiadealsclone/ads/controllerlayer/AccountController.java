@@ -1,16 +1,19 @@
 package com.jumiadealsclone.ads.controllerlayer;
 
+import com.jumiadealsclone.ads.dto.AccountAdvertiserDTO;
+import com.jumiadealsclone.ads.dto.AccountDTO;
 import com.jumiadealsclone.ads.modelelayer.Account;
 import com.jumiadealsclone.ads.modelelayer.Advertiser;
+import com.jumiadealsclone.ads.security.AuthenticationRequest;
+import com.jumiadealsclone.ads.security.AuthenticationResponse;
 import com.jumiadealsclone.ads.servicelayer.accountmanagement.interfaces.AccountService;
 import com.jumiadealsclone.ads.servicelayer.advertisermanagement.interfaces.AdvertiserService;
-import com.jumiadealsclone.ads.dto.DataWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.NoSuchAlgorithmException;
 
 @RestController
 @RequestMapping("/account")
@@ -24,21 +27,24 @@ public class AccountController {
         this.advertiserService = advertiserService;
     }
 
-    @PostMapping("/create")
-    @ResponseStatus(HttpStatus.OK)
-    public void createAccount(@RequestBody Account account){
-        Account account1 = account;
-        /*Account account = dataWrapper.account();
-        Advertiser advertiser = dataWrapper.advertiser();
+    @PostMapping("/register")
+    public ResponseEntity<AuthenticationResponse> register(@RequestBody AccountAdvertiserDTO accountAdvertiserDTO) throws NoSuchAlgorithmException {
+        Account account = accountAdvertiserDTO.account();
+        Advertiser advertiser = accountAdvertiserDTO.advertiser();
         accountService.createAccount(account);
         advertiser.setAccount(account);
-        advertiserService.createAdvertiser(advertiser);*/
+        return ResponseEntity.ok(advertiserService.createAdvertiser(advertiser));
     }
 
+    @PostMapping("/authenticate")
+    public AuthenticationResponse authenticate(@RequestBody AuthenticationRequest request) throws NoSuchAlgorithmException {
+            return advertiserService.authenticate(request);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping("/findAccount/{username}")
-    public ResponseEntity<Account> findAccount(@PathVariable("username") String username){
-        Account account = accountService.findAccount(username);
-        return new ResponseEntity<>(account, HttpStatus.OK);
+    public AccountDTO findAccount(@PathVariable("username") String username){
+        return accountService.findAccount(username);
     }
 
     @DeleteMapping("/deleteAccount/{username}")
