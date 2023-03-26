@@ -1,7 +1,7 @@
 package com.jumiadealsclone.ads.servicelayer.advertisermanagement.impl;
 
-import com.jumiadealsclone.ads.controllerlayer.AuthenticationRequest;
-import com.jumiadealsclone.ads.controllerlayer.AuthenticationResponse;
+import com.jumiadealsclone.ads.security.AuthenticationRequest;
+import com.jumiadealsclone.ads.security.AuthenticationResponse;
 import com.jumiadealsclone.ads.modelelayer.Advertiser;
 import com.jumiadealsclone.ads.security.JwtUtil;
 import com.jumiadealsclone.ads.servicelayer.advertisermanagement.interfaces.*;

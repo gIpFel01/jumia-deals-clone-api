@@ -1,7 +1,7 @@
 package com.jumiadealsclone.ads.servicelayer.advertisermanagement.interfaces;
 
-import com.jumiadealsclone.ads.controllerlayer.AuthenticationRequest;
-import com.jumiadealsclone.ads.controllerlayer.AuthenticationResponse;
+import com.jumiadealsclone.ads.security.AuthenticationRequest;
+import com.jumiadealsclone.ads.security.AuthenticationResponse;
 import com.jumiadealsclone.ads.modelelayer.Advertiser;
 
 import java.security.NoSuchAlgorithmException;

@@ -1,4 +1,4 @@
-package com.jumiadealsclone.ads.controllerlayer;
+package com.jumiadealsclone.ads.security;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

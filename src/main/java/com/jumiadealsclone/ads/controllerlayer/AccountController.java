@@ -4,6 +4,8 @@ import com.jumiadealsclone.ads.dto.AccountAdvertiserDTO;
 import com.jumiadealsclone.ads.dto.AccountDTO;
 import com.jumiadealsclone.ads.modelelayer.Account;
 import com.jumiadealsclone.ads.modelelayer.Advertiser;
+import com.jumiadealsclone.ads.security.AuthenticationRequest;
+import com.jumiadealsclone.ads.security.AuthenticationResponse;
 import com.jumiadealsclone.ads.servicelayer.accountmanagement.interfaces.AccountService;
 import com.jumiadealsclone.ads.servicelayer.advertisermanagement.interfaces.AdvertiserService;
 import org.springframework.beans.factory.annotation.Autowired;
