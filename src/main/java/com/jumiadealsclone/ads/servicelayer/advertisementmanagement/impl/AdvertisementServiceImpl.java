@@ -1,8 +1,7 @@
 package com.jumiadealsclone.ads.servicelayer.advertisementmanagement.impl;
 
 import com.jumiadealsclone.ads.dto.AdvertisementDTO;
-import com.jumiadealsclone.ads.dto.mapper.AdvertisementDTOMapper;
-import com.jumiadealsclone.ads.dto.mapper.AdvertiserDTOMapper;
+import com.jumiadealsclone.ads.mapper.AdvertisementDTOMapper;
 import com.jumiadealsclone.ads.modelelayer.Advertisement;
 import com.jumiadealsclone.ads.modelelayer.Advertiser;
 import com.jumiadealsclone.ads.servicelayer.advertisementmanagement.interfaces.AdvertisementService;

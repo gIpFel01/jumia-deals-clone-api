@@ -8,7 +8,10 @@ import com.jumiadealsclone.ads.servicelayer.accountmanagement.interfaces.Account
 import com.jumiadealsclone.ads.servicelayer.advertisermanagement.interfaces.AdvertiserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.NoSuchAlgorithmException;
 
 @RestController
 @RequestMapping("/account")
@@ -22,14 +25,18 @@ public class AccountController {
         this.advertiserService = advertiserService;
     }
 
-    @PostMapping("/create")
-    @ResponseStatus(HttpStatus.OK)
-    public void createAccount(@RequestBody AccountAdvertiserDTO accountAdvertiserDTO){
+    @PostMapping("/register")
+    public ResponseEntity<AuthenticationResponse> register(@RequestBody AccountAdvertiserDTO accountAdvertiserDTO) throws NoSuchAlgorithmException {
         Account account = accountAdvertiserDTO.account();
         Advertiser advertiser = accountAdvertiserDTO.advertiser();
         accountService.createAccount(account);
         advertiser.setAccount(account);
-        advertiserService.createAdvertiser(advertiser);
+        return ResponseEntity.ok(advertiserService.createAdvertiser(advertiser));
+    }
+
+    @PostMapping("/authenticate")
+    public AuthenticationResponse authenticate(@RequestBody AuthenticationRequest request) throws NoSuchAlgorithmException {
+            return advertiserService.authenticate(request);
     }
 
     @ResponseStatus(HttpStatus.OK)

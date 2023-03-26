@@ -1,7 +1,6 @@
-package com.jumiadealsclone.ads.dto.mapper;
+package com.jumiadealsclone.ads.mapper;
 
 import com.jumiadealsclone.ads.dto.AdvertisementDTO;
-import com.jumiadealsclone.ads.dto.AdvertiserDTO;
 import com.jumiadealsclone.ads.modelelayer.Advertisement;
 import org.springframework.stereotype.Service;
 

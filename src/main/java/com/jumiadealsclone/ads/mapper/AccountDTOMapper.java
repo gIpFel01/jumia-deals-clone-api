@@ -1,4 +1,4 @@
-package com.jumiadealsclone.ads.dto.mapper;
+package com.jumiadealsclone.ads.mapper;
 
 import com.jumiadealsclone.ads.dto.AccountDTO;
 import com.jumiadealsclone.ads.modelelayer.Account;
